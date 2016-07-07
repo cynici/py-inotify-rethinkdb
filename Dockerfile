@@ -16,3 +16,5 @@ RUN apt-get update \
  && pip install rethinkdb \
  && apt-get -y remove --purge python-dev build-essential \
  && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
