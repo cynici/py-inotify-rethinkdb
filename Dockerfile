@@ -2,7 +2,7 @@ FROM debian:testing
 MAINTAINER Cheewai Lai <clai@csir.co.za>
 ARG DEBIAN_FRONTEND=noninteractive
 ARG GOSU_VERSION=1.9
-ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
+#ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 RUN apt-get update \
  && apt-get -y upgrade \
  && apt-get -y install curl python python-dev python-pip build-essential \
