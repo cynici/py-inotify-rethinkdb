@@ -3,13 +3,14 @@
 #
 FROM alpine:edge
 MAINTAINER Cheewai Lai <clai@csir.co.za>
-ARG GOSU_VERSION=1.9
+ARG GOSU_VERSION=1.10
 RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >>/etc/apk/repositories \
  && apk --update add py-pip py-yaml py-setuptools py-pika@testing py-inotify@testing \
  && apk --update add --virtual build-dependencies curl python-dev build-base \
  && pip install --upgrade pip \
  && pip install --upgrade setuptools \
  && pip install rethinkdb \
+ && pip install raven --upgrade \
  && curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" \
  && chmod +x /usr/local/bin/gosu \
  && apk del build-dependencies \
