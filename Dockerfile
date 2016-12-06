@@ -15,8 +15,10 @@ RUN apt-get update \
  && pip install gevent_inotifyx \
  && pip install rethinkdb \
  && pip install pyinotify \
- && pip install raven --upgrade \
+ && pip install blinker raven --upgrade \
  && apt-get -y remove --purge python-dev build-essential \
  && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod 755 /docker-entrypoint.sh \
+ && chown root.root /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
